@@ -1,0 +1,15 @@
+#include <iostream>
+#include "measurement.h"
+
+int main() {
+    Measurement m(3.5, 4.2, 0.1, 0.2, 0.05);
+
+    std::cout << "x: " << m.x() << std::endl;
+    std::cout << "y: " << m.y() << std::endl;
+    std::cout << "Error matrix:\n" << m.errorMatrix() << std::endl;
+    std::cout << "Distance: " << m.distance() << std::endl;
+    std::cout << "Error: " << m.error() << std::endl;
+    std::cout << "Significance: " << m.significance() << std::endl;
+
+    return 0;
+}

@@ -1,0 +1,35 @@
+#include <TTree.h>
+#include <TH1F.h>
+#include <TRandom3.h>
+
+void generate_data() {
+  // Set random number generator
+  TRandom3 rand;
+
+  // Open a ROOT file
+  TFile f("data.root", "RECREATE");
+
+  // Create a TTree
+  TTree* tree = new TTree("data", "Random numbers tree");
+
+  // Define variables to store data
+  Double_t num;
+
+  // Branch the tree with the data variable
+  tree->Branch("number", &num, "number/D");
+
+  // Generate and store N random numbers
+  const int N = 1000;
+  for (int i = 0; i < N; ++i) {
+    num = rand.Gaus(0, 1);  // Generate Gaussian random number with mean 0 and std. dev. 1
+    tree->Fill();
+  }
+
+  // Write the tree to the file
+  tree->Write();
+
+  // Close the file
+  f.Close();
+
+  std::cout << "Generated " << N << " random numbers and saved to data.root" << std::endl;
+}

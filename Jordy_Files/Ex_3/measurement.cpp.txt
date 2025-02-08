@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cmath>
+
+class Measurement {
+public:
+    Measurement(double x, double y, double varX, double varY, double covXY);
+
+    double x() const { return x_; }
+    double y() const { return y_; }
+
+    const std::vector<std::vector<double>>& errorMatrix() const {
+        return errorMatrix_;
+    }
+
+    double distance() const {
+        return std::sqrt(x_ * x_ + y_ * y_);
+    }
+
+    double error() const {
+        // Error propagation for distance calculation
+        // ... (formula)
+    }
+
+    double significance() const {
+        return distance() / error();
+    }
+
+private:
+    double x_, y_;
+    double varX_, varY_, covXY_;
+    std::vector<std::vector<double>> errorMatrix_;
+};

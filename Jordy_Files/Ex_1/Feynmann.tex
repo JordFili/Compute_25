@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+
+\usepackage{sectsty}
+\usepackage{graphicx}
+\usepackage{feynmf}
+\usepackage{subfig}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\title{ Asignement 2}
+\author{Filip Jordánek}
+\date{\today}
+
+\begin{document}
+\maketitle	
+\pagebreak
+
+
+\begin{figure}
+\centering
+\begin{tabular}{c c}
+\begin{fmffile}{feyngraph} 
+  \begin{fmfgraph*}(110,60)
+    \fmfleft{i2,i1} 
+    \fmfright{o2,o1}
+    \fmflabel{$e^+$}{i1}
+    \fmflabel{${e^-}$}{i2}
+    \fmf{fermion,tension=1.5}{v1,i1} 
+    \fmf{photon,tension=1}{v1,o1} % make longer
+    \fmf{photon,tension=1}{v2,o2} % make longer
+    \fmf{fermion,tension=3}{i2,v2} % make shorter
+    \fmf{fermion,tension=1}{v2,v1} % make longer
+    \fmflabel{$\gamma$}{o2}
+    \fmflabel{$\gamma$}{o1}
+    \fmf{photon}{v1,o1}
+    \fmf{photon}{v2,o2}
+  \end{fmfgraph*}
+\end{fmffile}
+&
+\begin{fmffile}{feyngraph_2} 
+  \begin{fmfgraph*}(110,60)
+    \fmfleft{i2,i1} 
+    \fmfright{o2,o1}
+    \fmflabel{$e^+$}{i1}
+    \fmflabel{${e^-}$}{i2}
+    \fmf{fermion,tension=3}{v1,i1} 
+    \fmf{photon,tension=1}{v1,o1} % make longer
+    \fmf{photon,tension=1}{v2,o2} % make longer
+    \fmf{fermion,tension=1.5}{i2,v2} % make shorter
+    \fmf{fermion,tension=1}{v2,v1} % make longer
+    \fmflabel{$\gamma$}{o2}
+    \fmflabel{$\gamma$}{o1}
+    \fmf{photon}{v1,o1}
+    \fmf{photon}{v2,o2}
+  \end{fmfgraph*}
+\end{fmffile}
+\end{tabular}
+    \caption{\label{fig:fi} Figure 1: Feynman graphs for the lowest order contributions to electron-positron annihilation \cite{martin2017particle}.}
+\end{figure}
+
+\pagebreak
+
+
+\bibliographystyle{plain}
+\bibliography{refs.bib}
+    
+\end{document}

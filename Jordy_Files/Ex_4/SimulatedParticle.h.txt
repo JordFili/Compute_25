@@ -1,0 +1,14 @@
+#include "Track.h"
+
+class SimulatedParticle : public Track {
+public:
+  SimulatedParticle(double px, double py, double pz, double E, int pid, int parent_id);
+
+  // Getters for particle information
+  int pid() const { return pid_; }
+  int parent_id() const { return parent_id_; }
+
+private:
+  int pid_;
+  int parent_id_;
+};
