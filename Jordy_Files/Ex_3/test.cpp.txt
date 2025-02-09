@@ -1,15 +1,14 @@
 #include <iostream>
-#include "measurement.h"
+#include "MissingET.h"
 
 int main() {
-    Measurement m(3.5, 4.2, 0.1, 0.2, 0.05);
+    // Create a MET with some values
+    MissingET met(30.0, 40.0);
 
-    std::cout << "x: " << m.x() << std::endl;
-    std::cout << "y: " << m.y() << std::endl;
-    std::cout << "Error matrix:\n" << m.errorMatrix() << std::endl;
-    std::cout << "Distance: " << m.distance() << std::endl;
-    std::cout << "Error: " << m.error() << std::endl;
-    std::cout << "Significance: " << m.significance() << std::endl;
+    std::cout << "MET x: " << met.getMETx() << std::endl;
+    std::cout << "MET y: " << met.getMETy() << std::endl;
+    std::cout << "MET Magnitude: " << met.getMET() << std::endl;
+    std::cout << "MET Phi: " << met.getPhi() << std::endl;
 
     return 0;
 }
