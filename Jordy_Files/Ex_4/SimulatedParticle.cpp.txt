@@ -1,4 +1,0 @@
-#include "SimulatedParticle.h"
-
-SimulatedParticle::SimulatedParticle(double px, double py, double pz, double E, int pid, int parent_id)
-  : Track(px, py, pz, E), pid_(pid), parent_id_(parent_id) {}
