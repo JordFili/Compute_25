@@ -6,13 +6,11 @@
 
 class Track {
 private:
-    double px, py, pz, E; // 4-momentum components
+    double px, py, pz, E;
 
 public:
-    // Constructor
     Track(double px, double py, double pz, double E);
 
-    // Getters
     double getPx() const;
     double getPy() const;
     double getPz() const;
