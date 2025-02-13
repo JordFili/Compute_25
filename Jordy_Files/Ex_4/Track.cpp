@@ -1,17 +1,35 @@
-#ifndef TRACK_H
-#define TRACK_H
+#include "Track.h"
 
-#include <cmath>
-#include <iostream>
+Track::Track(double px, double py, double pz, double E) : px(px), py(py), pz(pz), E(E) {}
 
-class Track {
-private:
-    double px, py, pz, E;
+double Track::getPx() const { return px; }
+double Track::getPy() const { return py; }
+double Track::getPz() const { return pz; }
+double Track::getE() const { return E; }
 
-public:
-    Track(double px, double py, double pz, double E);
+double Track::getPT() const {
+    return std::sqrt(px * px + py * py);
+}
 
-    double getPx() const;
-    double getPy() const;
-    double getPz() const;
-    double getE() const;
+double Track::getEta() const {
+    double p = std::sqrt(px * px + py * py + pz * pz);
+    double theta = std::atan2(getPT(), pz);
+    return -std::log(std::tan(theta / 2.0));
+}
+
+void Track::printInfo() const {
+    std::cout << "Track Info: " << std::endl;
+    std::cout << "  px: " << px << ", py: " << py << ", pz: " << pz << ", E: " << E << std::endl;
+    std::cout << "  pT: " << getPT() << ", eta: " << getEta() << std::endl;
+}
+
+SimulatedTrack::SimulatedTrack(double px, double py, double pz, double E, int pid, int parentID)
+    : Track(px, py, pz, E), particleID(pid), parentParticleID(parentID) {}
+
+int SimulatedTrack::getParticleID() const { return particleID; }
+int SimulatedTrack::getParentParticleID() const { return parentParticleID; }
+
+void SimulatedTrack::printInfo() const {
+    Track::printInfo();
+    std::cout << "  Particle ID: " << particleID << ", Parent Particle ID: " << parentParticleID << std::endl;
+}
